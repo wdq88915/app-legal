@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Technical support, FAQ, and contact information for Watermark Camera."
+    />
+    <title>Watermark Camera - Support</title>
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --card: rgba(255, 255, 255, 0.06);
+        --border: rgba(255, 255, 255, 0.14);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.72);
+        --link: #7dd3fc;
+        --accent: #fbbf24;
+        --shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+        --radius: 16px;
+        --max: 960px;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f7f7fb;
+          --card: rgba(0, 0, 0, 0.03);
+          --border: rgba(0, 0, 0, 0.10);
+          --text: rgba(0, 0, 0, 0.88);
+          --muted: rgba(0, 0, 0, 0.62);
+          --link: #0369a1;
+          --accent: #b45309;
+          --shadow: 0 18px 55px rgba(2, 6, 23, 0.08);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(
+            1100px 600px at 20% -10%,
+            rgba(251, 191, 36, 0.22),
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 540px at 90% 0%,
+            rgba(125, 211, 252, 0.18),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        line-height: 1.55;
+      }
+
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 28px 18px 56px;
+      }
+
+      header {
+        padding: 24px 0 6px;
+      }
+
+      .title {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin: 0;
+        letter-spacing: 0.2px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.08);
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .lead {
+        margin: 10px 0 18px;
+        color: var(--muted);
+        max-width: 70ch;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 12px 0 0;
+      }
+
+      nav a {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+        color: var(--text);
+        font-size: 13px;
+      }
+
+      nav a:hover {
+        border-color: rgba(251, 191, 36, 0.55);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      @media (min-width: 820px) {
+        .grid {
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 16px;
+        }
+      }
+
+      .card {
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: var(--card);
+        box-shadow: var(--shadow);
+        padding: 16px 16px;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        letter-spacing: 0.2px;
+      }
+
+      h3 {
+        margin: 12px 0 8px;
+        font-size: 15px;
+      }
+
+      p {
+        margin: 8px 0;
+      }
+
+      ul {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+
+      li {
+        margin: 6px 0;
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        font-size: 0.95em;
+        padding: 2px 6px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.10);
+        color: var(--text);
+        white-space: nowrap;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(251, 191, 36, 0.55);
+        background: rgba(251, 191, 36, 0.12);
+        color: var(--text);
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      .btn.secondary {
+        border-color: var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        font-weight: 500;
+      }
+
+      .btn:hover {
+        border-color: rgba(251, 191, 36, 0.95);
+        text-decoration: none;
+      }
+
+      details {
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        padding: 10px 12px;
+        margin-top: 10px;
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--text);
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .note {
+        margin-top: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px dashed rgba(125, 211, 252, 0.45);
+        background: rgba(125, 211, 252, 0.10);
+        color: var(--muted);
+      }
+
+      footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="title">
+          <h1>Watermark Camera Support</h1>
+          <span class="badge">Watermark · Filters · Photo/Video Editing</span>
+        </div>
+        <p class="lead">
+          Need help with Watermark Camera? You can find quick answers below, or contact us
+          directly by email.
+        </p>
+        <nav aria-label="Support navigation">
+          <a href="#contact">Contact</a>
+          <a href="#faq">FAQ</a>
+          <a href="#subscriptions">Subscriptions & Purchases</a>
+          <a href="#permissions">Permissions</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#legal">Privacy & Terms</a>
+        </nav>
+      </header>
+
+      <div class="grid">
+        <section id="contact" class="card">
+          <h2>Contact</h2>
+          <p>
+            Support email:
+            <a
+              href="mailto:2191632172@qq.com?subject=Watermark%20Camera%20Support"
+              >2191632172@qq.com</a
+            >
+          </p>
+          <p class="note">
+            Tip: To help us solve your issue faster, please include your device model, iOS
+            version, app version, and screenshots/screen recordings when possible.
+          </p>
+          <div class="cta">
+            <a
+              class="btn"
+              href="mailto:2191632172@qq.com?subject=Watermark%20Camera%20Support&body=Please%20describe%20your%20issue%20here.%0A%0A---%0ADevice%20Model:%0AiOS%20Version:%0AApp%20Version:%0ASteps%20to%20Reproduce:%0AExpected%20Result:%0AActual%20Result:%0A"
+              >Send Email</a
+            >
+            <a class="btn secondary" href="#troubleshooting">View Troubleshooting</a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Quick Links</h2>
+          <ul>
+            <li>
+              Privacy Policy:
+              <a
+                href="https://wdq88915.github.io/app-legal/watermark-camera/privacy.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >privacy.html</a
+              >
+            </li>
+            <li>
+              Terms of Service:
+              <a
+                href="https://wdq88915.github.io/app-legal/watermark-camera/terms.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >terms.html</a
+              >
+            </li>
+          </ul>
+          <h3>Common Tasks</h3>
+          <ul>
+            <li>
+              Add or change watermark template: open the <code>Watermark</code> panel in
+              the camera or editor.
+            </li>
+            <li>
+              Hide location in watermarks: choose <code>Hide Location</code> in the
+              location selector.
+            </li>
+            <li>
+              Manage subscription: iOS <code>Settings</code> → <code>Apple ID</code> →
+              <code>Subscriptions</code>.
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <section id="faq" class="card" style="margin-top: 16px;">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>Does the app upload my photos or videos?</summary>
+          <p>
+            Watermark Camera is designed as an on-device editing tool. Your photos/videos
+            are processed locally on your device. For details, please refer to the Privacy
+            Policy.
+          </p>
+        </details>
+
+        <details>
+          <summary>Why is my location missing or incorrect on the watermark?</summary>
+          <ul>
+            <li>Make sure Location Services are enabled on your device.</li>
+            <li>
+              Go to iOS <code>Settings</code> → <code>Privacy &amp; Security</code> →
+              <code>Location Services</code> and allow access for Watermark Camera.
+            </li>
+            <li>
+              If you prefer not to show location, select <code>Hide Location</code> in the
+              location selector.
+            </li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>How do I export (save) to the Photos app?</summary>
+          <ul>
+            <li>In the editor, tap <code>Save</code> to save to your photo library.</li>
+            <li>
+              If saving fails, check the Photo Library permission in iOS
+              <code>Settings</code>.
+            </li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>How do I report a bug?</summary>
+          <p>
+            Please email us and include the steps to reproduce the issue, a screenshot or
+            screen recording, and (if possible) the original media that triggers the
+            problem.
+          </p>
+        </details>
+      </section>
+
+      <section id="subscriptions" class="card" style="margin-top: 14px;">
+        <h2>Subscriptions &amp; Purchases</h2>
+        <p>
+          If you subscribe to Pro, the subscription may auto-renew unless you cancel it in
+          iOS.
+        </p>
+        <ul>
+          <li>
+            Cancel or manage: iOS <code>Settings</code> → <code>Apple ID</code> →
+            <code>Subscriptions</code>.
+          </li>
+          <li>
+            Restore purchases: open the paywall in the app and tap <code>Restore</code>.
+          </li>
+          <li>
+            Refunds: refunds are handled by Apple. You can request a refund via
+            <a
+              href="https://reportaproblem.apple.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Report a Problem</a
+            >.
+          </li>
+        </ul>
+        <p class="note">
+          Payments are processed by Apple. We do not receive your full payment information.
+        </p>
+      </section>
+
+      <section id="permissions" class="card" style="margin-top: 14px;">
+        <h2>Permissions</h2>
+        <p>Watermark Camera may request the following permissions:</p>
+        <ul>
+          <li><strong>Camera</strong>: required to take photos and record videos.</li>
+          <li><strong>Microphone</strong>: required to record video with audio.</li>
+          <li>
+            <strong>Location</strong>: used to add location info to watermarks (optional).
+          </li>
+          <li>
+            <strong>Photos</strong>: required to save to and import from your photo
+            library.
+          </li>
+        </ul>
+      </section>
+
+      <section id="troubleshooting" class="card" style="margin-top: 14px;">
+        <h2>Troubleshooting</h2>
+
+        <details>
+          <summary>The camera preview is black / cannot open the camera</summary>
+          <ul>
+            <li>
+              Go to iOS <code>Settings</code> → <code>Watermark Camera</code> and enable
+              <code>Camera</code>.
+            </li>
+            <li>Force quit the app and reopen it.</li>
+            <li>Restart your device if the issue persists.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>My exported video has no sound</summary>
+          <ul>
+            <li>
+              Confirm the <code>Microphone</code> permission is enabled for Watermark
+              Camera.
+            </li>
+            <li>Try recording a short test video and exporting again.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Saving fails or the app cannot access Photos</summary>
+          <ul>
+            <li>
+              Go to iOS <code>Settings</code> → <code>Watermark Camera</code> and allow
+              <code>Photos</code> access.
+            </li>
+            <li>Make sure your device has enough free storage.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>The location is stuck on “Fetching…”</summary>
+          <ul>
+            <li>Check Location Services and network connectivity.</li>
+            <li>
+              If you are indoors or in a weak GPS environment, it may take longer to get a
+              stable location.
+            </li>
+          </ul>
+        </details>
+      </section>
+
+      <section id="legal" class="card" style="margin-top: 14px;">
+        <h2>Privacy &amp; Terms</h2>
+        <p>
+          Please read our legal documents:
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://wdq88915.github.io/app-legal/watermark-camera/privacy.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Privacy Policy</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://wdq88915.github.io/app-legal/watermark-camera/terms.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Terms of Service</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <footer>
+        <p>Last updated: 2026-01-03</p>
+        <p>© Watermark Camera. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>
