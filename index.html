@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>App Legal</title>
+    <meta
+      name="description"
+      content="Privacy Policy and Terms of Use pages for apps."
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #ffffff;
+        --fg: #0b1220;
+        --muted: rgba(11, 18, 32, 0.72);
+        --card: rgba(11, 18, 32, 0.04);
+        --border: rgba(11, 18, 32, 0.12);
+        --link: #2563eb;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #070a11;
+          --fg: #eef2ff;
+          --muted: rgba(238, 242, 255, 0.75);
+          --card: rgba(238, 242, 255, 0.06);
+          --border: rgba(238, 242, 255, 0.14);
+          --link: #60a5fa;
+          --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter,
+          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        max-width: 960px;
+        padding: 28px 18px 56px;
+        margin: 0 auto;
+      }
+
+      header {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+
+      .title {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        max-width: 70ch;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        background: var(--card);
+        border-radius: 14px;
+        padding: 16px 16px 14px;
+        box-shadow: var(--shadow);
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        letter-spacing: -0.01em;
+      }
+
+      .links {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      footer {
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="title">App Legal</div>
+        <div class="subtitle">
+          Legal documents for apps (Privacy Policy and Terms of Use). Select an
+          app below.
+        </div>
+      </header>
+
+      <main>
+        <div class="grid" role="list">
+          <section class="card" role="listitem" aria-label="Watermark Camera">
+            <h2>Watermark Camera</h2>
+            <div class="links">
+              <a href="watermark-camera/privacy.html">Privacy Policy</a>
+              <a href="watermark-camera/terms.html">Terms of Use</a>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        <div>
+          Tip: If you publish this repo with GitHub Pages, these pages will be
+          publicly accessible.
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
