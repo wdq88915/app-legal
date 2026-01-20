@@ -3,141 +3,607 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>App Legal</title>
-    <meta
-      name="description"
-      content="Privacy Policy and Terms of Use pages for apps."
-    />
+    <title>Slow Build - Devin Wang</title>
+    <meta name="description" content="Slow Build - Personal page of Devin Wang" />
     <style>
-      :root {
-        color-scheme: light dark;
-        --bg: #ffffff;
-        --fg: #0b1220;
-        --muted: rgba(11, 18, 32, 0.72);
-        --card: rgba(11, 18, 32, 0.04);
-        --border: rgba(11, 18, 32, 0.12);
-        --link: #2563eb;
-        --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #070a11;
-          --fg: #eef2ff;
-          --muted: rgba(238, 242, 255, 0.75);
-          --card: rgba(238, 242, 255, 0.06);
-          --border: rgba(238, 242, 255, 0.14);
-          --link: #60a5fa;
-          --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-        }
-      }
-
       * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html, body {
+        height: 100%;
+        overflow: hidden;
       }
 
       body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--fg);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter,
-          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        line-height: 1.6;
+        background: #050510;
+        color: #f0f0f8;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
       }
 
-      a {
-        color: var(--link);
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-
-      .wrap {
-        max-width: 960px;
-        padding: 28px 18px 56px;
-        margin: 0 auto;
+      /* SVG Background */
+      .bg-stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
       }
 
-      header {
-        display: grid;
-        gap: 10px;
-        margin-bottom: 22px;
+      /* Content */
+      .content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        padding: 20px;
+        pointer-events: none;
       }
 
       .title {
-        font-size: 28px;
+        font-size: clamp(3rem, 10vw, 6rem);
         font-weight: 700;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #fff 0%, #a8b4d4 50%, #6b7db3 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 12px;
+        text-shadow: 0 0 60px rgba(255, 255, 255, 0.3);
       }
 
       .subtitle {
-        color: var(--muted);
-        max-width: 70ch;
+        font-size: clamp(1rem, 3vw, 1.4rem);
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 300;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
       }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 14px;
-        margin-top: 18px;
-      }
-
-      .card {
-        border: 1px solid var(--border);
-        background: var(--card);
-        border-radius: 14px;
-        padding: 16px 16px 14px;
-        box-shadow: var(--shadow);
-      }
-
-      .card h2 {
-        margin: 0 0 10px;
-        font-size: 18px;
-        letter-spacing: -0.01em;
-      }
-
-      .links {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-
+      /* Footer */
       footer {
-        margin-top: 32px;
-        color: var(--muted);
-        font-size: 13px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .app-name {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 12px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .app-name:hover {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .app-links {
+        display: none;
+        gap: 24px;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .app-links.show {
+        display: flex;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .app-links a {
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .app-links a:hover {
+        color: #fff;
+      }
+
+      .app-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.5);
+        transition: width 0.3s ease;
+      }
+
+      .app-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Sun/Star */
+      .sun {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80px;
+        height: 80px;
+        margin: -40px 0 0 -40px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #fff5e0, #ffcc00 40%, #ff8c00 70%, #ff4500 100%);
+        box-shadow:
+          0 0 60px rgba(255, 200, 100, 0.8),
+          0 0 120px rgba(255, 150, 50, 0.6),
+          0 0 200px rgba(255, 100, 0, 0.4),
+          0 0 300px rgba(255, 50, 0, 0.2);
+        animation: sunPulse 4s ease-in-out infinite;
+        z-index: 1;
+      }
+
+      .sun::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 200, 100, 0.3) 0%, transparent 70%);
+        animation: sunCorona 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes sunPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      @keyframes sunCorona {
+        0% { transform: scale(1); opacity: 0.5; }
+        100% { transform: scale(1.3); opacity: 0.8; }
+      }
+
+      /* Planet base styles */
+      .planet {
+        position: absolute;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        z-index: 2;
+      }
+
+      .planet:hover {
+        filter: brightness(1.3);
+      }
+
+      .planet.fleeing {
+        transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Mercury */
+      .planet-1 {
+        width: 8px;
+        height: 8px;
+        margin: -4px 0 0 -4px;
+        background: linear-gradient(135deg, #b5b5b5, #8a8a8a);
+        box-shadow: 0 0 10px rgba(180, 180, 180, 0.5);
+        animation: orbit1 12s linear infinite;
+      }
+
+      /* Venus */
+      .planet-2 {
+        width: 14px;
+        height: 14px;
+        margin: -7px 0 0 -7px;
+        background: linear-gradient(135deg, #ffd699, #e6ac00);
+        box-shadow: 0 0 15px rgba(255, 200, 100, 0.5);
+        animation: orbit2 18s linear infinite;
+      }
+
+      /* Earth */
+      .planet-3 {
+        width: 16px;
+        height: 16px;
+        margin: -8px 0 0 -8px;
+        background: linear-gradient(135deg, #4a90d9, #2e5a8a);
+        box-shadow: 0 0 20px rgba(74, 144, 217, 0.5);
+        animation: orbit3 25s linear infinite;
+      }
+
+      .planet-3::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 3px;
+        width: 5px;
+        height: 4px;
+        background: #5a9a4a;
+        border-radius: 50%;
+      }
+
+      /* Mars */
+      .planet-4 {
+        width: 12px;
+        height: 12px;
+        margin: -6px 0 0 -6px;
+        background: linear-gradient(135deg, #ff6b6b, #c44569);
+        box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+        animation: orbit4 35s linear infinite;
+      }
+
+      /* Jupiter */
+      .planet-5 {
+        width: 32px;
+        height: 32px;
+        margin: -16px 0 0 -16px;
+        background: linear-gradient(135deg, #d4a574 0%, #c9956c 25%, #a67c52 50%, #d4a574 75%, #c9956c 100%);
+        box-shadow: 0 0 30px rgba(200, 150, 100, 0.5);
+        animation: orbit5 50s linear infinite;
+      }
+
+      .planet-5::before {
+        content: '';
+        position: absolute;
+        top: 45%;
+        left: 10%;
+        width: 80%;
+        height: 4px;
+        background: rgba(180, 100, 60, 0.6);
+        border-radius: 50%;
+      }
+
+      /* Saturn */
+      .planet-6 {
+        width: 26px;
+        height: 26px;
+        margin: -13px 0 0 -13px;
+        background: linear-gradient(135deg, #f4d59e, #d4a855);
+        box-shadow: 0 0 25px rgba(244, 200, 120, 0.4);
+        animation: orbit6 70s linear infinite;
+      }
+
+      .planet-6::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 12px;
+        border: 3px solid rgba(210, 180, 140, 0.6);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) rotateX(75deg);
+        background: transparent;
+      }
+
+      /* Uranus */
+      .planet-7 {
+        width: 20px;
+        height: 20px;
+        margin: -10px 0 0 -10px;
+        background: linear-gradient(135deg, #9fe2e2, #5fbfbf);
+        box-shadow: 0 0 20px rgba(159, 226, 226, 0.4);
+        animation: orbit7 90s linear infinite;
+      }
+
+      /* Neptune */
+      .planet-8 {
+        width: 18px;
+        height: 18px;
+        margin: -9px 0 0 -9px;
+        background: linear-gradient(135deg, #5b7fde, #3a5ba0);
+        box-shadow: 0 0 20px rgba(91, 127, 222, 0.5);
+        animation: orbit8 110s linear infinite;
+      }
+
+      /* Orbit animations */
+      @keyframes orbit1 {
+        from { transform: rotate(0deg) translateX(70px) rotate(0deg); }
+        to { transform: rotate(360deg) translateX(70px) rotate(-360deg); }
+      }
+
+      @keyframes orbit2 {
+        from { transform: rotate(45deg) translateX(100px) rotate(-45deg); }
+        to { transform: rotate(405deg) translateX(100px) rotate(-405deg); }
+      }
+
+      @keyframes orbit3 {
+        from { transform: rotate(90deg) translateX(140px) rotate(-90deg); }
+        to { transform: rotate(450deg) translateX(140px) rotate(-450deg); }
+      }
+
+      @keyframes orbit4 {
+        from { transform: rotate(180deg) translateX(180px) rotate(-180deg); }
+        to { transform: rotate(540deg) translateX(180px) rotate(-540deg); }
+      }
+
+      @keyframes orbit5 {
+        from { transform: rotate(30deg) translateX(250px) rotate(-30deg); }
+        to { transform: rotate(390deg) translateX(250px) rotate(-390deg); }
+      }
+
+      @keyframes orbit6 {
+        from { transform: rotate(120deg) translateX(320px) rotate(-120deg); }
+        to { transform: rotate(480deg) translateX(320px) rotate(-480deg); }
+      }
+
+      @keyframes orbit7 {
+        from { transform: rotate(200deg) translateX(390px) rotate(-200deg); }
+        to { transform: rotate(560deg) translateX(390px) rotate(-560deg); }
+      }
+
+      @keyframes orbit8 {
+        from { transform: rotate(270deg) translateX(460px) rotate(-270deg); }
+        to { transform: rotate(630deg) translateX(460px) rotate(-630deg); }
+      }
+
+      /* Orbit rings */
+      .orbit-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .orbit-ring-1 { width: 140px; height: 140px; margin: -70px 0 0 -70px; }
+      .orbit-ring-2 { width: 200px; height: 200px; margin: -100px 0 0 -100px; }
+      .orbit-ring-3 { width: 280px; height: 280px; margin: -140px 0 0 -140px; }
+      .orbit-ring-4 { width: 360px; height: 360px; margin: -180px 0 0 -180px; }
+      .orbit-ring-5 { width: 500px; height: 500px; margin: -250px 0 0 -250px; }
+      .orbit-ring-6 { width: 640px; height: 640px; margin: -320px 0 0 -320px; }
+      .orbit-ring-7 { width: 780px; height: 780px; margin: -390px 0 0 -390px; }
+      .orbit-ring-8 { width: 920px; height: 920px; margin: -460px 0 0 -460px; }
+
+      /* Hint text */
+      .hint {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.3);
+        z-index: 10;
+        opacity: 1;
+        transition: opacity 1s ease;
+      }
+
+      .hint.hidden {
+        opacity: 0;
+      }
+
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <header>
-        <div class="title">App Legal</div>
-        <div class="subtitle">
-          Legal documents for apps (Privacy Policy and Terms of Use). Select an
-          app below.
-        </div>
-      </header>
+    <!-- SVG Star Background -->
+    <svg class="bg-stars" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="bg-gradient" cx="50%" cy="50%" r="80%">
+          <stop offset="0%" stop-color="#0d0d1a" />
+          <stop offset="50%" stop-color="#080812" />
+          <stop offset="100%" stop-color="#050510" />
+        </radialGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <filter id="glow-strong">
+          <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bg-gradient)" />
 
-      <main>
-        <div class="grid" role="list">
-          <section class="card" role="listitem" aria-label="Watermark Camera">
-            <h2>Watermark Camera</h2>
-            <div class="links">
-              <a href="watermark-camera/privacy.html">Privacy Policy</a>
-              <a href="watermark-camera/terms.html">Terms of Use</a>
-              <a href="watermark-camera/support.html">Terms of Use</a>
-            </div>
-          </section>
-        </div>
-      </main>
+      <!-- Nebula clouds -->
+      <ellipse cx="20%" cy="30%" rx="15%" ry="10%" fill="rgba(100, 50, 150, 0.1)" filter="url(#glow-strong)"/>
+      <ellipse cx="80%" cy="70%" rx="20%" ry="12%" fill="rgba(50, 100, 150, 0.08)" filter="url(#glow-strong)"/>
+      <ellipse cx="60%" cy="20%" rx="12%" ry="8%" fill="rgba(150, 80, 100, 0.06)" filter="url(#glow-strong)"/>
 
-      <footer>
-        <div>
-          Tip: If you publish this repo with GitHub Pages, these pages will be
-          publicly accessible.
-        </div>
-      </footer>
-    </div>
+      <!-- Stars Layer 1 - Distant stars -->
+      <g fill="#fff" opacity="0.5">
+        <circle cx="2%" cy="5%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.5s" repeatCount="indefinite"/></circle>
+        <circle cx="8%" cy="12%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="15%" cy="8%" r="0.4"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" repeatCount="indefinite"/></circle>
+        <circle cx="22%" cy="18%" r="0.6"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.5s" repeatCount="indefinite"/></circle>
+        <circle cx="28%" cy="5%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.8s" repeatCount="indefinite"/></circle>
+        <circle cx="35%" cy="22%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.2s" repeatCount="indefinite"/></circle>
+        <circle cx="42%" cy="10%" r="0.4"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.3s" repeatCount="indefinite"/></circle>
+        <circle cx="48%" cy="28%" r="0.6"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="4s" repeatCount="indefinite"/></circle>
+        <circle cx="55%" cy="8%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.6s" repeatCount="indefinite"/></circle>
+        <circle cx="62%" cy="18%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.4s" repeatCount="indefinite"/></circle>
+        <circle cx="68%" cy="5%" r="0.4"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.1s" repeatCount="indefinite"/></circle>
+        <circle cx="75%" cy="25%" r="0.6"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.8s" repeatCount="indefinite"/></circle>
+        <circle cx="82%" cy="12%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.4s" repeatCount="indefinite"/></circle>
+        <circle cx="88%" cy="20%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.1s" repeatCount="indefinite"/></circle>
+        <circle cx="95%" cy="8%" r="0.4"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.7s" repeatCount="indefinite"/></circle>
+        <circle cx="5%" cy="35%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="12%" cy="42%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.5s" repeatCount="indefinite"/></circle>
+        <circle cx="18%" cy="55%" r="0.6"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.6s" repeatCount="indefinite"/></circle>
+        <circle cx="25%" cy="48%" r="0.4"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.2s" repeatCount="indefinite"/></circle>
+        <circle cx="32%" cy="62%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.3s" repeatCount="indefinite"/></circle>
+        <circle cx="38%" cy="45%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.9s" repeatCount="indefinite"/></circle>
+        <circle cx="45%" cy="58%" r="0.6"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="4.1s" repeatCount="indefinite"/></circle>
+        <circle cx="52%" cy="42%" r="0.4"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.4s" repeatCount="indefinite"/></circle>
+        <circle cx="58%" cy="65%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.5s" repeatCount="indefinite"/></circle>
+        <circle cx="65%" cy="52%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.6s" repeatCount="indefinite"/></circle>
+        <circle cx="72%" cy="45%" r="0.6"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.9s" repeatCount="indefinite"/></circle>
+        <circle cx="78%" cy="58%" r="0.4"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.3s" repeatCount="indefinite"/></circle>
+        <circle cx="85%" cy="42%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.2s" repeatCount="indefinite"/></circle>
+        <circle cx="92%" cy="55%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.8s" repeatCount="indefinite"/></circle>
+        <circle cx="3%" cy="68%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.1s" repeatCount="indefinite"/></circle>
+        <circle cx="10%" cy="75%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.5s" repeatCount="indefinite"/></circle>
+        <circle cx="18%" cy="82%" r="0.6"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.7s" repeatCount="indefinite"/></circle>
+        <circle cx="25%" cy="72%" r="0.4"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.2s" repeatCount="indefinite"/></circle>
+        <circle cx="32%" cy="88%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.4s" repeatCount="indefinite"/></circle>
+        <circle cx="40%" cy="75%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.9s" repeatCount="indefinite"/></circle>
+        <circle cx="48%" cy="92%" r="0.6"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="4.2s" repeatCount="indefinite"/></circle>
+        <circle cx="55%" cy="78%" r="0.4"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.4s" repeatCount="indefinite"/></circle>
+        <circle cx="62%" cy="85%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.6s" repeatCount="indefinite"/></circle>
+        <circle cx="70%" cy="72%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.7s" repeatCount="indefinite"/></circle>
+        <circle cx="78%" cy="92%" r="0.6"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="4s" repeatCount="indefinite"/></circle>
+        <circle cx="85%" cy="78%" r="0.4"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.3s" repeatCount="indefinite"/></circle>
+        <circle cx="92%" cy="85%" r="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.3s" repeatCount="indefinite"/></circle>
+        <circle cx="98%" cy="72%" r="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.8s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- Stars Layer 2 - Medium stars -->
+      <g fill="#fff" filter="url(#glow)">
+        <circle cx="10%" cy="15%" r="0.9"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="4.5s" repeatCount="indefinite"/></circle>
+        <circle cx="25%" cy="32%" r="1"><animate attributeName="opacity" values="0.5;1;0.5" dur="5s" repeatCount="indefinite"/></circle>
+        <circle cx="40%" cy="18%" r="0.8"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="4s" repeatCount="indefinite"/></circle>
+        <circle cx="55%" cy="35%" r="1.1"><animate attributeName="opacity" values="0.4;1;0.4" dur="5.5s" repeatCount="indefinite"/></circle>
+        <circle cx="70%" cy="15%" r="0.9"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="4.2s" repeatCount="indefinite"/></circle>
+        <circle cx="85%" cy="28%" r="1"><animate attributeName="opacity" values="0.3;1;0.3" dur="5.2s" repeatCount="indefinite"/></circle>
+        <circle cx="8%" cy="60%" r="0.8"><animate attributeName="opacity" values="0.4;0.8;0.4" dur="4.8s" repeatCount="indefinite"/></circle>
+        <circle cx="22%" cy="75%" r="1.1"><animate attributeName="opacity" values="0.5;1;0.5" dur="5.3s" repeatCount="indefinite"/></circle>
+        <circle cx="38%" cy="68%" r="0.9"><animate attributeName="opacity" values="0.3;0.9;0.3" dur="4.3s" repeatCount="indefinite"/></circle>
+        <circle cx="52%" cy="82%" r="1"><animate attributeName="opacity" values="0.4;1;0.4" dur="5.1s" repeatCount="indefinite"/></circle>
+        <circle cx="68%" cy="65%" r="0.8"><animate attributeName="opacity" values="0.5;0.8;0.5" dur="4.6s" repeatCount="indefinite"/></circle>
+        <circle cx="82%" cy="72%" r="1.1"><animate attributeName="opacity" values="0.3;1;0.3" dur="5.4s" repeatCount="indefinite"/></circle>
+        <circle cx="95%" cy="60%" r="0.9"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="4.4s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- Stars Layer 3 - Bright stars -->
+      <g fill="#fff" filter="url(#glow-strong)">
+        <circle cx="15%" cy="10%" r="1.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="6s" repeatCount="indefinite"/></circle>
+        <circle cx="35%" cy="25%" r="1.8"><animate attributeName="opacity" values="0.7;1;0.7" dur="7s" repeatCount="indefinite"/></circle>
+        <circle cx="60%" cy="12%" r="1.6"><animate attributeName="opacity" values="0.5;1;0.5" dur="5.5s" repeatCount="indefinite"/></circle>
+        <circle cx="80%" cy="35%" r="1.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="6.5s" repeatCount="indefinite"/></circle>
+        <circle cx="92%" cy="18%" r="1.7"><animate attributeName="opacity" values="0.7;1;0.7" dur="7.5s" repeatCount="indefinite"/></circle>
+        <circle cx="5%" cy="85%" r="1.6"><animate attributeName="opacity" values="0.5;1;0.5" dur="6s" repeatCount="indefinite"/></circle>
+        <circle cx="28%" cy="90%" r="1.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="6.8s" repeatCount="indefinite"/></circle>
+        <circle cx="50%" cy="70%" r="1.8"><animate attributeName="opacity" values="0.7;1;0.7" dur="7.2s" repeatCount="indefinite"/></circle>
+        <circle cx="75%" cy="88%" r="1.6"><animate attributeName="opacity" values="0.5;1;0.5" dur="5.8s" repeatCount="indefinite"/></circle>
+        <circle cx="95%" cy="75%" r="1.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="6.3s" repeatCount="indefinite"/></circle>
+      </g>
+    </svg>
+
+    <!-- Orbit rings -->
+    <div class="orbit-ring orbit-ring-1"></div>
+    <div class="orbit-ring orbit-ring-2"></div>
+    <div class="orbit-ring orbit-ring-3"></div>
+    <div class="orbit-ring orbit-ring-4"></div>
+    <div class="orbit-ring orbit-ring-5"></div>
+    <div class="orbit-ring orbit-ring-6"></div>
+    <div class="orbit-ring orbit-ring-7"></div>
+    <div class="orbit-ring orbit-ring-8"></div>
+
+    <!-- Sun -->
+    <div class="sun"></div>
+
+    <!-- Planets -->
+    <div class="planet planet-1" data-name="Mercury"></div>
+    <div class="planet planet-2" data-name="Venus"></div>
+    <div class="planet planet-3" data-name="Earth"></div>
+    <div class="planet planet-4" data-name="Mars"></div>
+    <div class="planet planet-5" data-name="Jupiter"></div>
+    <div class="planet planet-6" data-name="Saturn"></div>
+    <div class="planet planet-7" data-name="Uranus"></div>
+    <div class="planet planet-8" data-name="Neptune"></div>
+
+    <!-- Hint -->
+    <div class="hint" id="hint">Click the planets to see them flee</div>
+
+    <!-- Main Content -->
+    <main class="content">
+      <h1 class="title">Slow Build</h1>
+      <p class="subtitle">Devin Wang</p>
+    </main>
+
+    <!-- Footer with App Links -->
+    <footer>
+      <div class="app-name" onclick="toggleLinks()">LociStamp</div>
+      <div class="app-links" id="appLinks">
+        <a href="watermark-camera/privacy.html">Privacy Policy</a>
+        <a href="watermark-camera/terms.html">Terms of Use</a>
+        <a href="watermark-camera/support.html">Support</a>
+      </div>
+    </footer>
+
+    <script>
+      function toggleLinks() {
+        document.getElementById('appLinks').classList.toggle('show');
+      }
+
+      // Planet fleeing interaction
+      const planets = document.querySelectorAll('.planet');
+      let clickedCount = 0;
+
+      planets.forEach(planet => {
+        planet.addEventListener('click', function(e) {
+          if (this.classList.contains('fleeing')) return;
+
+          // Hide hint after first click
+          if (clickedCount === 0) {
+            document.getElementById('hint').classList.add('hidden');
+          }
+          clickedCount++;
+
+          // Get current position
+          const rect = this.getBoundingClientRect();
+          const centerX = window.innerWidth / 2;
+          const centerY = window.innerHeight / 2;
+
+          // Calculate flee direction (away from center)
+          const currentX = rect.left + rect.width / 2;
+          const currentY = rect.top + rect.height / 2;
+          const angle = Math.atan2(currentY - centerY, currentX - centerX);
+
+          // Random flee distance
+          const distance = 800 + Math.random() * 400;
+          const fleeX = Math.cos(angle) * distance;
+          const fleeY = Math.sin(angle) * distance;
+
+          // Stop the orbit animation and set current position
+          this.style.animation = 'none';
+          this.style.left = currentX + 'px';
+          this.style.top = currentY + 'px';
+          this.style.margin = '0';
+          this.style.transform = 'translate(-50%, -50%)';
+
+          // Trigger reflow
+          this.offsetHeight;
+
+          // Flee!
+          this.classList.add('fleeing');
+          this.style.left = (currentX + fleeX) + 'px';
+          this.style.top = (currentY + fleeY) + 'px';
+          this.style.transform = 'translate(-50%, -50%) rotate(' + (Math.random() * 720 - 360) + 'deg) scale(0.3)';
+
+          // Respawn after delay
+          setTimeout(() => {
+            this.classList.remove('fleeing');
+            this.style.cssText = '';
+          }, 5000);
+        });
+      });
+    </script>
   </body>
 </html>
